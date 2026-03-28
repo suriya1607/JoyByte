@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --primary: #e7c91c;
-  --secondary: #e8ebec;
-  --bg: #f7f8f9;
+  --primary: #FF6B35;
+  --primary-dark: #1A2940;
+  --secondary: #EDF0F5;
+  --bg: #FFF8F0;
   --surface: #ffffff;
-  --text: #1f2937;
-  --text-muted: #6b7280;
-  --shadow: 0 10px 28px rgba(17, 24, 39, 0.08);
+  --text: #1A2940;
+  --text-muted: #64748b;
+  --shadow: 0 10px 28px rgba(26, 41, 64, 0.10);
   --radius-sm: 12px;
   --radius-md: 16px;
 }
@@ -41,10 +42,10 @@ body {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(10px);
   padding: 14px 16px;
-  border-bottom: 1px solid #eceef1;
+  border-bottom: 1px solid rgba(26, 41, 64, 0.08);
 }
 
 .brand-block {
@@ -151,7 +152,7 @@ body {
 }
 
 .base-input:focus {
-  outline: 2px solid rgba(231, 201, 28, 0.38);
+  outline: 2px solid rgba(255, 107, 53, 0.28);
   border-color: var(--primary);
 }
 
@@ -191,7 +192,7 @@ body {
 
 .base-btn.primary {
   background: var(--primary);
-  color: #111827;
+  color: #ffffff;
 }
 
 .base-btn:hover {
@@ -231,7 +232,7 @@ body {
   bottom: 0;
   height: 72px;
   background: #ffffff;
-  border-top: 1px solid #eceef1;
+  border-top: 1px solid rgba(26, 41, 64, 0.08);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
@@ -312,7 +313,7 @@ body {
 .avatar {
   border-radius: 18px;
   overflow: hidden;
-  background: radial-gradient(120% 120% at 20% 20%, #ffffff 0%, #f9f2c2 35%, #e7c91c 100%);
+  background: radial-gradient(120% 120% at 20% 20%, #ffffff 0%, #ffd4c2 35%, #FF6B35 100%);
   border: 1px solid rgba(17, 24, 39, 0.08);
   box-shadow: 0 14px 34px rgba(17, 24, 39, 0.12);
 }
@@ -382,8 +383,8 @@ body {
 }
 
 .toggle.on {
-  background: rgba(231, 201, 28, 0.92);
-  border-color: rgba(231, 201, 28, 1);
+  background: var(--primary);
+  border-color: var(--primary);
 }
 
 .toggle-knob {

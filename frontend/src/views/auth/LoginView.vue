@@ -15,6 +15,7 @@ const router = useRouter()
 const error = ref(null)
 async function submit() {
   authStore.isLoading = true
+  // return;
   try {
     if(!phone.value.trim()) {
       toast.error('Phone number is required')
