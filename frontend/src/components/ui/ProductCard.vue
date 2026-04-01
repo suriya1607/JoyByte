@@ -8,7 +8,7 @@
       <h4 class="product-card-title">{{ product.name }}</h4>
       <p class="product-card-description">{{ product.description }}</p>
       <div class="product-card-footer">
-        <span class="price">${{ product.price }}</span>
+        <span class="price">{{ formatPrice(product.price) }}</span>
         <BaseButton
           v-if="product.stock_quantity > 0"
           @click="handleAddToCart"
@@ -27,6 +27,7 @@
 <script setup>
 import { ref } from 'vue'
 import BaseButton from './BaseButton.vue'
+import formatPrice from '../../lib/formatPrice'
 
 const props = defineProps({
   product: {

@@ -19,7 +19,7 @@
 
             <div class="item-details">
               <h3>{{ item.product.name }}</h3>
-              <p class="price">${{ item.product.price }}</p>
+              <p class="price">{{ formatPrice(item.product.price) }}</p>
             </div>
 
             <div class="item-controls">
@@ -47,7 +47,7 @@
               </button>
             </div>
 
-            <div class="item-subtotal">${{ (item.product.price * item.quantity).toFixed(2) }}</div>
+            <div class="item-subtotal">{{ formatPrice(item.product.price * item.quantity) }}</div>
           </div>
         </div>
 
@@ -55,15 +55,15 @@
         <div class="cart-summary">
           <div class="summary-row">
             <span>Subtotal:</span>
-            <span>${{ cartStore.cartTotal.toFixed(2) }}</span>
+            <span>{{ formatPrice(cartStore.cartTotal) }}</span>
           </div>
           <div class="summary-row">
             <span>Tax (10%):</span>
-            <span>${{ (cartStore.cartTotal * 0.1).toFixed(2) }}</span>
+            <span>{{ formatPrice(cartStore.cartTotal * 0.1) }}</span>
           </div>
           <div class="summary-row total">
             <span>Total:</span>
-            <span>${{ (cartStore.cartTotal * 1.1).toFixed(2) }}</span>
+            <span>{{ formatPrice(cartStore.cartTotal * 1.1) }}</span>
           </div>
         </div>
 
@@ -79,6 +79,7 @@ import { useRouter } from 'vue-router'
 import { useCartStore } from '../stores/cart'
 import AppShell from '../components/layout/AppShell.vue'
 import BaseButton from '../components/ui/BaseButton.vue'
+import formatPrice from '../lib/formatPrice'
 
 const router = useRouter()
 const cartStore = useCartStore()
