@@ -63,6 +63,8 @@ class Order extends Model
         'status_value',
         'payment_method_label',
         'payment_method_value',
+        'total_amount',
+        'items_count',
     ];
 
     public function user(): BelongsTo
@@ -119,6 +121,22 @@ class Order extends Model
     {
         $methods = config('order.payment_methods', []);
         return $methods[$this->payment_method] ?? 'unknown';
+    }
+
+    /**
+     * Get total amount (alias for total field for API consistency)
+     */
+    public function getTotalAmountAttribute()
+    {
+        return $this->total;
+    }
+
+    /**
+     * Get count of items in this order
+     */
+    public function getItemsCountAttribute(): int
+    {
+        return $this->items()->count();
     }
 
     /**

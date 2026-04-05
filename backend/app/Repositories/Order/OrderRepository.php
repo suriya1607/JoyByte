@@ -29,15 +29,40 @@ class OrderRepository
 
     public function getUserOrders(int $userId)
     {
-        return Order::with(['items', 'shop'])
+        return Order::with(['items', 'shop', 'address'])
             ->where('user_id', $userId)
             ->latest()
             ->get();
     }
 
+    /**
+     * Get user orders with filtering, sorting, and pagination
+     */
+    public function getUserOrdersWithFilters(
+        int $userId,
+        ?int $status = null,
+        string $sortBy = 'created_at',
+        string $sortOrder = 'desc',
+        int $perPage = 10
+    ) {
+        $query = Order::with(['items', 'shop', 'address'])
+            ->where('user_id', $userId);
+
+        // Filter by status if provided
+        if ($status !== null) {
+            $query->where('status', $status);
+        }
+
+        // Sort
+        $query->orderBy($sortBy, $sortOrder);
+
+        // Paginate
+        return $query->paginate($perPage);
+    }
+
     public function getOrderById(int $orderId, int $userId): ?Order
     {
-        return Order::with(['items', 'shop'])
+        return Order::with(['items', 'shop', 'address'])
             ->where('id', $orderId)
             ->where('user_id', $userId)
             ->first();
