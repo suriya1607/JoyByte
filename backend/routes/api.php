@@ -34,6 +34,8 @@ Route::prefix('v1')->group(function (): void {
         Route::post('/orders', [OrderController::class, 'store']);
         Route::get('/orders', [OrderController::class, 'index']);
         Route::get('/orders/{id}', [OrderController::class, 'show']);
+        Route::get('/orders/{id}/tracking', [OrderController::class, 'tracking']);
+        Route::put('/orders/{id}/status', [OrderController::class, 'updateStatus']);
     });
 });
 

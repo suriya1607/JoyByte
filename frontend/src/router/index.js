@@ -7,6 +7,8 @@ import CartView from '../views/CartView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import CheckoutView from '../views/CheckoutView.vue'
 import OrderSuccessView from '../views/OrderSuccessView.vue'
+import OrderHistoryView from '../views/OrderHistoryView.vue'
+import OrderDetailView from '../views/OrderDetailView.vue'
 import { useAuthStore } from '../stores/auth'
 
 const router = createRouter({
@@ -19,6 +21,8 @@ const router = createRouter({
     { path: '/app/shops/:id', name: 'shop-detail', component: ShopDetailView, meta: { auth: true } },
     { path: '/app/cart', name: 'cart', component: CartView, meta: { auth: true } },
     { path: '/app/checkout', name: 'checkout', component: CheckoutView, meta: { auth: true } },
+    { path: '/app/orders', name: 'orders', component: OrderHistoryView, meta: { auth: true } },
+    { path: '/app/orders/:id', name: 'order-detail', component: OrderDetailView, meta: { auth: true } },
     { path: '/app/orders/:id/success', name: 'order-success', component: OrderSuccessView, meta: { auth: true } },
     { path: '/app/profile', name: 'profile', component: ProfileView, meta: { auth: true } }
   ]

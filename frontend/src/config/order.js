@@ -56,3 +56,25 @@ export const getStatusLabel = (statusId) => {
 export const getPaymentMethodLabel = (paymentMethodId) => {
   return PAYMENT_METHOD_LABELS[paymentMethodId] || 'Unknown'
 }
+
+/**
+ * Comprehensive ORDER_CONFIG object for component usage
+ */
+export const ORDER_CONFIG = {
+  statuses: [
+    { id: 1, label: 'Order Placed', icon: '📝', color: '#fbbf24' },
+    { id: 2, label: 'Confirmed', icon: '📋', color: '#3b82f6' },
+    { id: 3, label: 'Being Prepared', icon: '👨‍🍳', color: '#a855f7' },
+    { id: 4, label: 'Ready for Pickup', icon: '✅', color: '#f97316' },
+    { id: 5, label: 'Out for Delivery', icon: '🚚', color: '#10b981' },
+    { id: 6, label: 'Delivered', icon: '📦', color: '#10b981' },
+    { id: 7, label: 'Cancelled', icon: '❌', color: '#ef4444' },
+  ],
+  paymentMethods: [
+    { id: 1, label: 'Cash on Delivery', code: 'cod', icon: '💵' },
+    { id: 2, label: 'Online Payment', code: 'online', icon: '💳' },
+    { id: 3, label: 'Card Payment', code: 'card', icon: '🏧' },
+  ],
+  statusLabels: ORDER_STATUS_LABELS,
+  paymentMethodLabels: PAYMENT_METHOD_LABELS,
+}
