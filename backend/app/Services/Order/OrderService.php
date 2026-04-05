@@ -99,6 +99,25 @@ class OrderService
         return $this->orderRepository->getUserOrders($userId);
     }
 
+    /**
+     * Get user orders with filtering, sorting, and pagination
+     */
+    public function getUserOrdersWithFilters(
+        int $userId,
+        ?int $status = null,
+        string $sortBy = 'created_at',
+        string $sortOrder = 'desc',
+        int $perPage = 10
+    ) {
+        return $this->orderRepository->getUserOrdersWithFilters(
+            userId: $userId,
+            status: $status,
+            sortBy: $sortBy,
+            sortOrder: $sortOrder,
+            perPage: $perPage
+        );
+    }
+
     public function getOrderDetail(int $orderId, int $userId): ?Order
     {
         return $this->orderRepository->getOrderById($orderId, $userId);

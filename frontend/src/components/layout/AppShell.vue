@@ -45,6 +45,9 @@ onMounted(async () => {
         🛒 Cart
         <CartBadge :count="cartStore.cartCount" />
       </RouterLink>
+        <RouterLink to="/app/orders" class="nav-btn" :class="{ active: route.path.startsWith('/app/orders') }">
+        📦 Orders
+      </RouterLink>
       <RouterLink to="/app/profile" class="nav-btn" :class="{ active: route.path === '/app/profile' }">
         👤 Profile
       </RouterLink>
