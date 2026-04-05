@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\AddressController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\ShopController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CartController;
@@ -24,5 +26,14 @@ Route::prefix('v1')->group(function (): void {
         Route::post('/cart/items', [CartController::class, 'store']);
         Route::put('/cart/items/{productId}', [CartController::class, 'update']);
         Route::delete('/cart/items/{productId}', [CartController::class, 'destroy']);
+
+        Route::post('/addresses/from-coordinates', [AddressController::class, 'fromCoordinates']);
+        Route::resource('/addresses', AddressController::class, ['only' => ['index', 'store', 'update', 'destroy']]);
+        Route::post('/addresses/{address}/set-default', [AddressController::class, 'setDefault']);
+
+        Route::post('/orders', [OrderController::class, 'store']);
+        Route::get('/orders', [OrderController::class, 'index']);
+        Route::get('/orders/{id}', [OrderController::class, 'show']);
     });
 });
+

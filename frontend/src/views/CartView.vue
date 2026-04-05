@@ -103,7 +103,7 @@ const handleRemove = async (productId) => {
 }
 
 const handleCheckout = () => {
-  alert('Checkout feature coming soon!')
+  router.push({ name: 'checkout' })
 }
 
 const handleContinueShopping = () => {

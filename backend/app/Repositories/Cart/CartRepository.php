@@ -43,7 +43,7 @@ class CartRepository
         return CartItem::query()
             ->where('user_id', $userId)
             ->with(['product' => function ($query) {
-                $query->select('id', 'name', 'price', 'image_url', 'stock_quantity');
+                $query->select('id', 'shop_id', 'name', 'price', 'image_url', 'stock_quantity');
             }])
             ->get();
     }

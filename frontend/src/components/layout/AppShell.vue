@@ -8,7 +8,15 @@ import { useCartStore } from '../../stores/cart'
 const route = useRoute()
 const cartStore = useCartStore()
 
-const showNav = computed(() => route.path.startsWith('/app'))
+const FULLSCREEN_ROUTES = ['checkout', 'order-success']
+
+const showNav = computed(() =>
+  route.path.startsWith('/app') && !FULLSCREEN_ROUTES.includes(route.name)
+)
+
+const showHeader = computed(() =>
+  !FULLSCREEN_ROUTES.includes(route.name)
+)
 
 onMounted(async () => {
   try {
@@ -21,11 +29,11 @@ onMounted(async () => {
 
 <template>
   <div class="app-shell">
-    <header class="sticky-header">
+    <header v-if="showHeader" class="sticky-header">
       <AppLogo />
     </header>
 
-    <main class="page-content">
+    <main :class="showHeader ? 'page-content' : 'fullscreen-content'">
       <slot />
     </main>
 
@@ -63,6 +71,11 @@ onMounted(async () => {
 main {
   flex: 1;
   overflow-y: auto;
+}
+
+.fullscreen-content {
+  flex: 1;
+  padding: 0;
 }
 
 .bottom-nav {
